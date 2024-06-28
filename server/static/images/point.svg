@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: sketchtool 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="New-landing" sketch:type="MSArtboardGroup" transform="translate(-89.000000, -1504.000000)">
+            <g id="Group-3" sketch:type="MSLayerGroup" transform="translate(90.000000, 1505.000000)">
+                <g id="Group" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-73-Copy-5" stroke="#FFFFFF" cx="19" cy="19" rx="19" ry="19"></ellipse>
+                    <g id="Group-2" transform="translate(4.470588, 4.470588)">
+                        <ellipse id="Oval-73-Copy-4" fill="#D5C17F" cx="14.5262189" cy="14.5262189" rx="13.5682357" ry="13.5682357"></ellipse>
+                        <path d="M20.4356643,22.3529412 L16.7937555,22.3529412 L16.7937555,16.8854913 L12.5830852,16.8854913 L12.5830852,22.3529412 L8.94117647,22.3529412 L8.94117647,8.94117647 L12.5830852,8.94117647 L12.5830852,13.9132534 L16.7937555,13.9132534 L16.7937555,8.94117647 L20.4356643,8.94117647 L20.4356643,22.3529412 Z" id="H" fill="#4A4A4A"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

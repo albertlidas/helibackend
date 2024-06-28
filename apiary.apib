@@ -1,0 +1,219 @@
+FORMAT: 1A
+HOST: http://54.187.229.176:8000/
+
+# Heli
+
+# Group Authentication and users
+
+Each API request should contain user's API token.
+The token should be included in `Authorization` HTTP
+token prefixed by the string literal "Token ".
+
+Example:
+
+```
+Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
+```
+
+Unauthenticated responses that are denied permission
+will result in an `HTTP 401 Unauthorized` response
+with the `WWW-Authenticate` header.
+
+Example:
+
+```
+WWW-Authenticate: Token
+```
+
+
+## Profile [/api/v1/users/me/]
+
+### Create user [POST]
+
++ Request (application/json)
+
+    + Attributes(NewUser)
+
++ Response 201 (application/json)
+
+    + Attributes(UserWithNoPassword)
+
+## Login [/api/v1/users/login/]
+
+### Get token [POST]
+
++ Request
+
+    + Attributes(UsernameAndPassword)
+
++ Response 200 (application/json)
+    Supplied credentials are valid
+    + Body
+
+            {'token': '9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b'}
+
++ Response 400 (application/json)
+    Credentials are invalid
+    + Body
+
+
+# Group Helicopters
+
+API for helicopters app and landing page.
+## Landing page APIs [/api/v1/]
+
+### Save E-mail [POST /api/v1/email/]
+Saves e-mail of the user to database
++ Parameters
+    + email: bobik@gmail.com (required, string)
+
++ Response 201 (application/json)
+Email is saved
+    + Body
+
++ Response 400 (application/json)
+Incorrect data
+    + Body
+
+### Send Message [POST /api/v1/message/]
+Sends message to mail.helicopters@gmail.com
+
++ Request (application/json)
+    + Attributes (SendMessage)
+
++ Response 201 (application/json)
+Message is sent
+    + Body
+
++ Response 400 (application/json)
+Incorrect or missing data
+    + Body
+
+
+## Helipads Search [/api/v1/helipads]
+
+### List closest Helipads [GET /api/v1/helipads{?latitude,longitude}]
+Find Helipads sorted by proximity to specified location
++ Parameters
+    + latitude: 10.123 (required, string)
+    + longitude: 10.123 (required, string)
+
++ Response 200 (application/json)
+
+    + Attributes (array[Helipad])
+
+### List Helipad's destinations [GET /api/v1/helipads/{id}/destinations]
+
++ Parameters
+    + id: 3 (required, number)
+
++ Response 200 (application/json)
+
+    + Attributes (array[HelipadDestination])
+
++ Response 404 (application/json)
+Specified helipad not found
+    + Body
+
+### List departures [GET /api/v1/helipads/{id}/destinations/{destination}]
+
++ Parameters
+    + id: 3 (required, number)
+    + destination: Odessa (required, string) - Destination name
+
++ Response 200 (application/json)
+
+    + Attributes (array[HelipadDeparture])
+
++ Response 404 (application/json)
+Specified helipad or destination not found
+    + Body
+
+### Book a seat for a Departure [PUT /api/v1/helipads/{id}/destinations/{destination}/booking/seat/{seat_number}/]
+Create a booking for a specific destination
++ Parameters
+    + id: 3 (required, number)
+    + destination: 8 (required, number) - destination
+    + seat_number: 3 (required, number) - the seat of choice, currently from 1 to 4 only
+
++ Response 201 (application/json)
+Booking is created
+    + Body
+
++ Response 404 (application/json)
+Specified helipad, destination or departure not found
+    + Body
+
+## Helipads Owner's API [/api/v1/helipads/]
+
+### Add Destination [POST /api/v1/helipads/{id}/destinations/]
+Add a new route to helipad
++ Parameters
+    + id: 777 (required, number)
+
++ Request (application/json)
+    + Attributes (AddDestination)
+
++ Response 201 (application/json)
+Flight is added
+    + Body
+
++ Response 404 (application/json)
+Data error
+    + Body
+
+### Remove Destination [DELETE /api/v1/helipads/{helipad_id}/destinations/{id}/]
+
++ Parameters
+    + helipad_id: 12 (required, number)
+    + id: 777 (required, number) - Id of destination to remove
+
++ Response 200 (application/json)
+Deleted
+    + Body
+
++ Response 404 (application/json)
+Helipad or destination not found
+    + Body
+
+# Data Structures
+
+## Helipad
++ id: 3 (required, number)
++ title: Kiev (required, string)
++ distance: 10000 (required, number) - Distance in meters
+
+## HelipadDestination
++ name: Odessa (required, string)
+
+## HelipadDeparture
++ id: 1024 (required, number)
++ to: Odessa (required, string)
++ seats (required, Seats)
++ time: `2015-10-16T00:00:00+02:00` (required, string)
+
+## Seats
++ total: 3 (required, number)
++ free: 2 (required, number)
+
+## AddDestination
++ helipad: 777 (required, number)
++ to: Santa Marta (required, string)
++ info: Plata o Plomo (required, string)
+
+## SendMessage
++ email: bobik@gmail.com (required, string)
++ text: I love you (required, string)
+
+## NewUser
++ username: user1 (required, string)
++ email: noone@nowhere.com (required, string)
++ password: secret (required, string)
+
+## UsernameAndPassword
++ username: user1 (required, string)
++ password: secret (required, string)
+
+## UserWithNoPassword
++ username: user1 (required, string)
++ email: noone@nowhere.com (required, string)

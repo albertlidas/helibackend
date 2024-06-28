@@ -1,0 +1,78 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/core.css' %}"/>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="{% static 'js/signup.js' %}" type="text/javascript"></script>
+    <title>Registration - Main-Heli</title>
+</head>
+<body class="body-sign-up">
+<div class="div-registration page-section">
+    <form class="content login" name="loginForm" id="registration" action="/api/v1/owner/create/" enctype="application/json" method="post">
+        <table>
+        <tr>
+        <span class="heading">Registration</span>
+            <td>
+                <label class="col1">Email</label>
+                <input class="col1" name="email" id="email" type="email" placeholder="Email">
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class="col1">Password</label>
+            <input class="col1" name="password" id="password" type="password" placeholder="Password">
+            </td>
+            <td>
+            <label class="col2">Confirm Password</label>
+            <input class="col2" name="confirm-password" id="confirm-password" type="password" placeholder="Confirm Password">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <label class="col1">Organization</label>
+            <input class="col1" style="width: 100%;" name="company" id="company" type="text" placeholder="Your organization">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <label class="col1">Address</label>
+            <input class="col1" style="width: 100%;" name="address" id="address" type="text" placeholder="Address">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class="col1">Country</label>
+            <input class="col1" name="country" id="country" type="text" placeholder="Country">
+            </td>
+            <td>
+            <label class="col2">City</label>
+            <input class="col2" name="city" id="city" type="text" placeholder="City/Town">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label class="col1">Contact person</label>
+            <input class="col1" name="contact" id="contact" type="text" placeholder="Contact person">
+            </td>
+            <td>
+            <label class="col2">Telephone</label>
+            <input class="col2" name="phone" id="phone" type="text" placeholder="Telephone">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+	            <div class="div-sign-up-submit">
+			        <div class="button" id="sign-in">Sign in</div>
+		            <input type="submit" class="button" value="Sign up">
+	            </div>
+            </td>
+        </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

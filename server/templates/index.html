@@ -1,0 +1,125 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=500">
+    <meta name="google-site-verification" content="Z9LNu35zn-bFddX8K6sqG6zB3l9jHkm4-GVqYys4Gas" />
+    <title>MainHelicopters</title>
+    <link rel="stylesheet" href="{% static 'css/core.css' %}"/>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="{% static 'js/jquery.betterScroll.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+</head>
+<body class="body-landing">
+<div class="landing page-section">
+<header id="about">
+    <div class="header-wrapper">
+        <img src="{% static 'images/logo.png' %}" alt="Main helicopters" class="logo"/>
+        <div class="navigation-menu">
+        <nav>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+          <!--  <a href="http://dashboard.main-heli.com">Login</a> -->
+        </nav>
+        </div>
+    </div>
+</header>
+<figure class="section1">
+    <video loop muted poster="{% static 'images/helicopter1.png' %}" id="bgvid" class="page-frame" preload="metadata">
+        <source src="{% static 'images/mainheli.mov' %}" type="video/mp4">
+    </video>
+    <div class="mobile content">
+        <div class="title">Find helicopter</div>
+        <div class="text">Travel in any direction to any destination</div>
+        <div class="button"><a href="#contact">Contact</a></div>
+    </div>
+</figure>
+</div>
+<div class="section2 page-section">
+    <div id="features">
+        <div class="point after"></div>
+        <div class="promo-image">
+            <img src="{% static 'images/iphone1.png' %}" alt="iphone" class="iphone">
+        </div>
+        <div class="promo-message">
+            <div class="promo-title">Search</div>
+            <div class="promo-text">Travel in any direction to any destination</div>
+        </div>
+    </div>
+</div>
+<div class="section3 page-section">
+    <div class="point before after"></div>
+    <div class="promo-image">
+        <img src="{% static 'images/iphone2.png' %}" alt="iphone" class="iphone">
+    </div>
+    <div class="promo-message">
+        <div class="promo-title">Reserve</div>
+        <div class="promo-text">Travel in any direction to any destination</div>
+    </div>
+</div>
+<div class="section4 page-section">
+    <div class="point before"></div>
+    <div class="promo-image">
+        <img src="{% static 'images/iphone3.png' %}" alt="iphone" class="iphone">
+    </div>
+    <div class="promo-message">
+        <div class="promo-title">Fly</div>
+        <div class="promo-text">Travel in any direction to any destination</div>
+    </div>
+</div>
+<div id="owl-example" class="owl-carousel mobile">
+    <div>
+        <div class="point after"></div>
+        <div class="message">
+            <div class="title">Search</div>
+            <div class="text">Travel in any direction to any destination</div>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/iphone1.png' %}" alt="iphone" class="iphone">
+        </div>
+    </div>
+    <div>
+        <div class="point before after"></div>
+        <div class="message">
+            <div class="title">Reserve</div>
+            <div class="text">Travel in any direction to any destination</div>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/iphone2.png' %}" alt="iphone" class="iphone">
+        </div>
+    </div>
+    <div>
+        <div class="point before"></div>
+        <div class="message">
+            <div class="title">Fly</div>
+            <div class="text">Travel in any direction to any destination</div>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/iphone3.png' %}" alt="iphone" class="iphone">
+        </div>
+    </div>
+</div>
+<div class="section5 page-section">
+    <form class="content contact" name="contactForm" id="contact" action="/api/v1/message/" enctype="application/json" method="post">
+        <div class="title">Contact us</div>
+        <input name="email" id="email" type="email" placeholder="Your email">
+        <textarea name="text" id="message" placeholder="Your message"></textarea>
+        <input type="submit" class="button" value="Send">
+    </form>
+</div>
+<footer>
+    <div class="content">
+        <img src="{% static 'images/logo.png' %}" alt="Main helicopters" class="inline logo"/>
+        <nav class="inline">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+            <!--<a href="http://dashboard.main-heli.com">Login</a>-->
+        </nav>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+@media only screen and (max-width: 666px) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: url("../images/background.png");
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-size: auto;
+        font-family: Lato-Medium;
+    }
+
+    .section5 .content{
+        width: calc(100% - 66px);
+        left: 33px;
+    }
+    .section2, .section3, .section4, footer, header nav{
+        display: none;
+    }
+
+    .section5 input[type=text], .section5 input[type=email], .section5 textarea{
+        width: 100%;
+    }
+
+    header .logo{
+        margin: 0 auto;
+        display: block;
+    }
+
+    .section1 video{
+        display: none;
+    }
+    
+    .mobile{
+        display: block !important;
+    }
+
+    .owl-theme{
+        height: 700px;
+        /*width: 175px !important;*/
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .owl-theme .text{
+        margin: 0 auto;
+    }
+
+    .owl-theme .owl-controls .owl-page {
+        display: inline-block;
+    }
+
+    .owl-theme .owl-controls .owl-page span {
+        background: none repeat scroll 0 0 #869791;
+        border-radius: 20px;
+        display: block;
+        height: 12px;
+        margin: 10px 7px;
+        opacity: 0.5;
+        width: 12px;
+    }
+    .owl-theme .owl-controls .owl-page.active span {
+        background: none repeat scroll 0 0 #ffffff;
+    }
+
+    .image{
+        margin-top: 23px;
+    }
+
+    .image img{
+        height: 371px;
+    }
+    .point.after:after {
+        border-bottom: 2px solid white;
+        position: relative;
+        top: 18px;
+        left: 37px;
+        width: calc(50vw - 19px);
+        height: 0;
+    }
+    .point{
+        top: 0;
+        left: calc(50vw - 19px);
+        margin-bottom: 43px;
+        margin-top: 43px;
+    }
+    .point.before:before {
+        border-bottom: 2px solid white;
+        height: 0;
+        width: calc(50vw - 19px);
+        position: absolute;
+        top: 18px;
+        left: calc(19px - 50vw);
+    }
+}

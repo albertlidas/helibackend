@@ -1,0 +1,70 @@
+<div class="leftPanel">
+    <div class="">
+        <button ng-click="addRoute()" class="add">Add new route</button>
+        <button ng-click="switchMode()" class="switch">{{editMode?'View details':'Edit routes'}}</button>
+    </div>
+    <ul class="routes">
+        <li class="route" ng-repeat="route in routes" ng-click="selectRoute(route)">
+            <div class="info">
+                <div class="inline day">
+                    <span>{{route.arrival|date:'dd'}}</span>
+                    <span>{{route.arrival|date:'MMM'}}</span>
+                </div>
+                <div class="inline place">
+                    <span>#{{route.board}}</span>{{route.location}} - <span>{{route.to}}</span>
+                    <br/>
+                    <span class="text">Arrival </span><span class="time">{{route.arrival|date:'hh.mm a'}}</span>
+                    <span class="text"> - Departure </span><span class="time">{{route.departure|date:'hh.mm a'}}</span>
+                </div>
+            </div>
+            <div>
+                <span class="remove pull-right" ng-click="removeRoute(route.id, $index);$event.stopPropagation()">Close fly</span>
+            </div>
+        </li>
+    </ul>
+</div>
+<header>
+    <ul ng-show="currentRoute != undefined">
+        <li class="inline">
+            #{{currentRoute.board}}
+        </li>
+        <li class="inline">
+            <span>Status:</span><br/>
+            <span>Waiting for departure...</span>
+        </li>
+        <li class="inline">
+            <span>Pilot 1:</span><br/>
+            <span>{{currentRoute.pilot1}}</span>
+        </li>
+        <li class="inline">
+            <span>Pilot 2:</span><br/>
+            <span>{{currentRoute.pilot2}}</span>
+        </li>
+    </ul>
+</header>
+
+<div class="main">
+    <div class="helicopter">
+        <div class="driverSeat" ng-include="'imgs/darkGreySeat.svg'"></div>
+        <div class="secondDriverSeat" ng-include="'imgs/graySeat1.svg'"></div>
+        <div ng-click="selectPlace(currentRoute.place1, 1)" ng-class="currentRoute.place1 ? 'active' : ''" class="seat1" ng-include="'imgs/whiteSeat1.svg'"></div>
+        <div ng-click="selectPlace(currentRoute.place2, 2)" ng-class="currentRoute.place2 ? 'active' : ''" class="seat2" ng-include="'imgs/whiteSeat1.svg'"></div>
+        <div ng-click="selectPlace(currentRoute.place3, 3)" ng-class="currentRoute.place3 ? 'active' : ''" class="seat3" ng-include="'imgs/whiteSeat2.svg'"></div>
+        <div ng-click="selectPlace(currentRoute.place4, 4)" ng-class="currentRoute.place4 ? 'active' : ''" class="seat4" ng-include="'imgs/whiteSeat2.svg'"></div>
+    </div>
+    <div class="panel" ng-show="currentPlace.value != undefined">
+        <div class="title">PLACE {{currentPlace.number}}</div>
+        <div class="status inline">
+            <div ng-include="'imgs/credit-card.svg'"></div>
+            <div>Paid</div>
+        </div>
+        <div class="status inline" ng-class="currentPlace.value ? 'active' : ''">
+            <div ng-include="'imgs/tick.svg'"></div>
+            <div>Reserved</div>
+        </div>
+        <div class="status inline">
+            <div ng-include="'imgs/luggage.svg'"></div>
+            <div>Luggage</div>
+        </div>
+    </div>
+</div>

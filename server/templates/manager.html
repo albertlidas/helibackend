@@ -1,0 +1,135 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/core.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
+    <script src="{% static 'js/manager.js' %}" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyA2IDQE7uOXLsxbJX95U15mVJI72zzZpRg"></script>
+    <title>Dashboard - Main-Heli</title>
+</head>
+<body>
+<div class="div-dashboard page-section">
+    <div class="left-rail">
+        <div class="left-top-controls">
+            <div class="left-top-controls-new"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add new route</div>
+            <div class="route-line-header"></div>
+        </div>
+        <div class="routes-container"></div>
+    </div>
+    <div class="container-right">
+	    <div class="header-top-block">
+		    <div class="left-header-controls">
+			    <label class="company-label"></label>
+		    </div>
+		    <div class="right-top-controls">
+	            <div class="right-top-controls-settings"><i class="glyphicon glyphicon-cog"></i>&nbsp;Settings</div>
+	            <div class="right-top-controls-logout"><i class="glyphicon glyphicon-log-out"></i>&nbsp;Sign out</div>
+	        </div>
+		</div>
+	    <div class="main-view">
+	        <div class="main-view-header">
+	            <div class="main-view-header-vessel">
+	                <div class="main-view-header-vessel-schedule"></div>
+	                <img src="{% static 'images/helicopter-icon.png' %}" style="padding:0 30px 0 33px; vertical-align: baseline;">
+	                <div class="main-view-header-vessel-model"></div>
+	            </div>
+	            <div class="main-view-header-pilots">
+	                <div class="main-view-header-pilots-first">
+	                    <div class="main-view-header-pilots-first-caption">Pilot 1</div>
+	                    <div class="main-view-header-pilots-first-name"></div>
+	                </div>
+	                <div class="main-view-header-pilots-second">
+	                    <div class="main-view-header-pilots-second-caption">Pilot 2</div>
+	                    <div class="main-view-header-pilots-second-name"></div>
+	                </div>
+	            </div>
+	            <div class="main-view-header-status">Status:<br>Waiting for departure...</div>
+	        </div>
+	        <div class="main-view-body"></div>
+	    </div>
+	    <div class="right-rail">
+	    </div>
+    </div>
+</div>
+<div class="popup-route-add">
+    <form class="content new-route" id="add-route" action="/api/v1/route/" enctype="application/json" method="post">
+        <i class="glyphicon glyphicon-remove popup-route-add-close"></i>
+        <label>From</label>
+        <input id="origin" type="text" placeholder="Select endpoint">
+        <input id="origin-lat" type="hidden">
+        <input id="origin-long" type="hidden">
+        <label>To</label>
+        <input id="target" type="text" placeholder="Select endpoint">
+        <input id="target-lat" type="hidden">
+        <input id="target-long" type="hidden">
+        <input type="submit" class="button" value="Add new route">
+    </form>
+</div>
+<div class="popup-schedule-add">
+    <form class="content new-schedule" id="add-schedule" action="/api/v1/departure/" enctype="application/json" method="post">
+        <i class="glyphicon glyphicon-remove popup-schedule-add-close"></i>
+        <input type="hidden" id="route-id">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label class="col1">Departure time</label>
+                        <input class="col1" id="origin_time" type="datetime-local" placeholder="">
+                    </td>
+                    <td>
+                        <label class="col2">Arrival time</label>
+                        <input class="col2" id="target_time" type="datetime-local" placeholder="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="col1">Model</label>
+                  <!--      <input class="col1" id="model" type="text" placeholder="Helicopter model"> -->
+                        <select class="col1" id="vessel-model"></select>
+                    </td>
+                    <td>
+                        <label class="col2">Seats</label>
+                        <input class="col2" id="seats" type="text" placeholder="Number available" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="col1">Board number</label>
+                        <input class="col1" id="board" type="text" placeholder="Flight tag">
+                    </td>
+                    <td>
+                        <label class="col2">Pilot 1</label>
+                        <input class="col2" id="pilot1" type="text" placeholder="Pilot name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="col1">Pilot 2</label>
+                        <input class="col1" id="pilot2" type="text" placeholder="Pilot name">
+                    </td>
+                    <td>
+                        <label class="col2">Ticket price</label>
+                        <input class="col2" id="price" type="text" placeholder="Price in USD">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="col1">Enter useful info</label>
+                        <textarea id="information" class="col1" style="width: 100%;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="button" value="Add new schedule">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>

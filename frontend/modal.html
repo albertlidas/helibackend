@@ -1,0 +1,45 @@
+<div class="btf-modal">
+    <div class="title inline">DESTINATION</div>
+    <div class="inline pull-right close" ng-click="close()">Close</div>
+    <br/>
+    <label class="inline">
+        From
+        <input ng-model="newRoute.location" type="text"/>
+    </label>
+    <label class="inline">
+        To
+        <input ng-model="newRoute.to" type="text"/>
+    </label>
+    <div class="title">TIME</div>
+    <label class="inline">
+        Arrival
+        <input ng-model="newRoute.arriveTmp" type="time"/>
+    </label>
+    <label class="inline">
+        Departure
+        <input ng-model="newRoute.departTmp" type="time"/>
+    </label>
+    <label class="inline">
+        Date
+        <input ng-model="newRoute.date" type="date"/>
+    </label>
+    <div class="title">HELICOPTER</div>
+    <label class="inline">
+        Model
+        <input type="text"/>
+    </label>
+    <div class="title">BOARD INFO</div>
+    <label class="inline">
+        Board number
+        <input ng-model="newRoute.board" type="text"/>
+    </label>
+    <label class="inline">
+        Pilot 1
+        <input ng-model="newRoute.pilot1" type="text"/>
+    </label>
+    <label>
+        Pilot 2
+        <input ng-model="newRoute.pilot2" type="text"/>
+    </label>
+    <button ng-click="createRoute(newRoute)" class="create">{{isNumber(newRoute.id)?'Save':'Add new route'}}</button>
+</div>
