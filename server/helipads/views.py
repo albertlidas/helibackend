@@ -19,6 +19,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from .models import *
 from .serializers import *
+from .forms import HelipadOwnerForm
 
 
 # API for Users Login
@@ -37,16 +38,17 @@ class ObtainOwnerAuthToken(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         token, created = Token.objects.get_or_create(user=user)
-        country = user.helipadowner.country
-        organization = user.helipadowner.organization
-        city = user.helipadowner.city
-        address = user.helipadowner.address
-        email = user.email
-        phone = user.helipadowner.phone
-        contact_name = user.helipadowner.contact_name
-        return Response(
-            {'token': token.key, "organization": organization, "country": country, "city": city, "address": address,
-             "email": email, "phone": phone, "contact_name": contact_name})
+
+        helipad_owner = user.helipadowner
+        form = HelipadOwnerForm(instance=helipad_owner)
+
+        response_data = form.cleaned_data
+        response_data.update({
+            'token': token.key,
+            'email': user.email
+        })
+
+        return Response(response_data)
 
 
 class ObtainUserAuthToken(APIView):
